@@ -14,4 +14,4 @@ def property_list(request):
     
     data = list(properties.values()) 
     
-    return JsonResponse(data, safe=False)
+    return JsonResponse({"properties": data})
