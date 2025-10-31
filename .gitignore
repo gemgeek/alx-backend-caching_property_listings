@@ -1,0 +1,21 @@
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Database
+# (Even though we use Docker, good to ignore local dev dbs)
+*.sqlite3
+
+# Docker
+# (Ignore the data volume if it were mapped to a local folder)
+postgres_data/
+
+# IDE files
+.vscode/
+.idea/
+
+# Environment variables
+.env

@@ -1,0 +1,9 @@
+asgiref==3.8.1
+async-timeout==5.0.1
+backports.zoneinfo==0.2.1
+django==4.2.25
+django-redis==5.4.0
+psycopg2-binary==2.9.10
+redis==6.1.1
+sqlparse==0.5.3
+typing-extensions==4.13.2
