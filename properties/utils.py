@@ -1,7 +1,7 @@
 from django.core.cache import cache
 from .models import Property
 import logging
-from django_redis import get_redis_connection
+from django_redis import get_redis_connection 
 
 logger = logging.getLogger(__name__)
 
@@ -23,25 +23,23 @@ def get_all_properties():
     
     return queryset
 
+
 def get_redis_cache_metrics():
     """
     Retrieves cache performance metrics (hits, misses, hit ratio)
     from the default Redis connection.
     """
     try:
-        
         conn = get_redis_connection("default")
         
         info = conn.info()
         
         hits = info.get('keyspace_hits', 0)
         misses = info.get('keyspace_misses', 0)
-        total = hits + misses
         
-        if total > 0:
-            hit_ratio = (hits / total) * 100
-        else:
-            hit_ratio = 0.0
+        total_requests = hits + misses
+        
+        hit_ratio = (hits / total_requests * 100) if total_requests > 0 else 0
             
         metrics = {
             'hits': hits,
@@ -60,4 +58,4 @@ def get_redis_cache_metrics():
             'misses': 0,
             'hit_ratio': 0.0,
             'error': str(e)
-        }    
+        }
